@@ -479,7 +479,8 @@
 
 
             $("#presortFinishButton").on('touchstart', function() {
-                sendData();
+                var results = sendData();
+                submitViaFirebase(results);
             })
         });
 
@@ -489,28 +490,31 @@
 
             // alert("send data called -3");
 
-            var randomId = localStorage.getItem("randomId");
-            var response = localStorage.getItem("resultsAsString");
+            var results = {};
 
-            var grayReview = JSON.parse(localStorage.getItem("grayReview"));
-            var grayCardResults = grayReview.toString();
-            var pinkReview = JSON.parse(localStorage.getItem("pinkReview"));
-            var pinkCardResults = pinkReview.toString();
-            var greenReview = JSON.parse(localStorage.getItem("greenReview"));
-            var greenCardResults = greenReview.toString();
+            results.randomId = localStorage.getItem("randomId");
+            results.sort = localStorage.getItem("resultsAsString");
+            results.grayReview = JSON.parse(localStorage.getItem("grayReview")) || "no_response";
+            results.grayCardResults = grayReview.toString();
+            results.pinkReview = JSON.parse(localStorage.getItem("pinkReview")) || "no_response";
+            results.pinkCardResults = pinkReview.toString();
+            results.greenReview = JSON.parse(localStorage.getItem("greenReview")) || "no_response";
+            results.greenCardResults = greenReview.toString();
 
-            var responseGreenState1 = localStorage.getItem("responseGreenState1");
-            var responsePinkState1 = localStorage.getItem("responsePinkState1");
-            var responseGrayState1 = localStorage.getItem("responseGrayState1");
+            results.responseGreenState1 = localStorage.getItem("responseGreenState1");
+            results.responsePinkState1 = localStorage.getItem("responsePinkState1");
+            results.responseGrayState1 = localStorage.getItem("responseGrayState1");
 
-            var year = $("#question1").val();
-            var smartphone = $("#question2").val();
-            var ipadHome = $("#question3").val();
-            var ipadClass = $("#question4").val();
-            var ipadSocial = $("#question5").val();
-            var iphoneSocial = $("#question6").val();
+            results.year = $("#question1").val();
+            results.smartphone = $("#question2").val();
+            results.ipadHome = $("#question3").val();
+            results.ipadClass = $("#question4").val();
+            results.ipadSocial = $("#question5").val();
+            results.iphoneSocial = $("#question6").val();
 
-
+            console.log(results);
+            return results;
+            }
 
             function submitViaFirebase(results) {
                 //var results = makeParamsObject();
@@ -528,27 +532,6 @@
                     }
                 });
             }
-
-
-
-            var responseObject2 = {
-                respondent: randomId,
-                response: response,
-                grayCardResults: grayCardResults,
-                greenCardResults: greenCardResults,
-                pinkCardResults: pinkCardResults,
-                responseGreenState1: responseGreenState1,
-                responsePinkState1: responsePinkState1,
-                responseGrayState1: responseGrayState1,
-                year: year,
-                smartphone: smartphone,
-                ipadHome: ipadHome,
-                ipadClass: ipadClass,
-                ipadSocial: ipadSocial,
-                iphoneSocial: iphoneSocial
-            }
-
-        submitViaFirebase(responseObject2);     
 
         function makeId() {
             var text = "";
