@@ -480,6 +480,7 @@
 
 
             $("#presortFinishButton").on('touchstart', function() {
+                $("#presortFinishButton").prop("disabled", true);
                 var results = sendData();
                 submitViaFirebase(results);
             })
@@ -541,6 +542,7 @@
                 }
                 rootRef.push(results, function (error) {
                     if (error) {
+                      $("#presortFinishButton").prop("disabled", false);
                       alert("error");
                     } else {
                       alert("success");
