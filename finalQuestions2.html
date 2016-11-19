@@ -333,7 +333,8 @@
             width: 150px;
             height: 34px;
             overflow: hidden;
-            background: url(new_arrow.png) no-repeat right #ddd;
+            /*background: url(new_arrow.png) no-repeat right #ddd;*/
+            background: #ddd;
             border: 1px solid #ccc;
             font-size: 20px;
         }
@@ -492,18 +493,32 @@
 
             var results = {};
 
-            results.randomId = localStorage.getItem("randomId");
-            results.sort = localStorage.getItem("resultsAsString");
-            results.grayReview = JSON.parse(localStorage.getItem("grayReview")) || "no_response";
-            results.grayCardResults = grayReview.toString();
-            results.pinkReview = JSON.parse(localStorage.getItem("pinkReview")) || "no_response";
-            results.pinkCardResults = pinkReview.toString();
-            results.greenReview = JSON.parse(localStorage.getItem("greenReview")) || "no_response";
-            results.greenCardResults = greenReview.toString();
+            var randomId = localStorage.getItem("randomId");
+            results.randomId = randomId;
 
-            results.responseGreenState1 = localStorage.getItem("responseGreenState1");
-            results.responsePinkState1 = localStorage.getItem("responsePinkState1");
-            results.responseGrayState1 = localStorage.getItem("responseGrayState1");
+            var sort = localStorage.getItem("resultsAsString");
+            results.sort = sort;
+
+            var grayReview = JSON.parse(localStorage.getItem("grayReview")) || [""];
+            var grayReview = grayReview.toString();
+            results.grayCardResults = grayReview;
+
+            var pinkReview = JSON.parse(localStorage.getItem("pinkReview")) || [""];
+            var pinkCardResults = pinkReview.toString();
+            results.pinkCardResults = pinkCardResults;
+
+            var greenReview = JSON.parse(localStorage.getItem("greenReview")) || [""];
+            var greenCardResults = greenReview.toString();
+            results.greenCardResults = greenCardResults;
+
+            var responseGreenState1 = localStorage.getItem("responseGreenState1");
+            results.responseGreenState1 = responseGreenState1;
+
+            var responsePinkState1 = localStorage.getItem("responsePinkState1");
+            results.responsePinkState1 = responsePinkState1;
+
+            var responseGrayState1 = localStorage.getItem("responseGrayState1");
+            results.responseGrayState1 = responseGrayState1;
 
             results.year = $("#question1").val();
             results.smartphone = $("#question2").val();
