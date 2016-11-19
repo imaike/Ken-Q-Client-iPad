@@ -498,11 +498,11 @@
             results.randomId = randomId;
 
             var sort = localStorage.getItem("resultsAsString");
-            results.sort = sort;
+            results.sort = sort.split(",").join("|");
 
             var grayReview = JSON.parse(localStorage.getItem("grayReview")) || [""];
             var grayReview = grayReview.toString();
-            results.grayCardResults = grayReview;
+            results.grayReview;
 
             var pinkReview = JSON.parse(localStorage.getItem("pinkReview")) || [""];
             var pinkCardResults = pinkReview.toString();
