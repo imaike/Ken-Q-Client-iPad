@@ -501,16 +501,19 @@
             results.sort = sort.split(",").join("|");
 
             var grayReview = JSON.parse(localStorage.getItem("grayReview")) || [""];
-            var grayReview = grayReview.toString();
-            results.grayReview;
+            grayReview = grayReview.toString();
+            grayReview = grayReview.split(",").join("|");
+            results.grayCardResults = grayReview;
 
             var pinkReview = JSON.parse(localStorage.getItem("pinkReview")) || [""];
-            var pinkCardResults = pinkReview.toString();
-            results.pinkCardResults = pinkCardResults;
+            pinkReview = pinkReview.toString();
+            pinkReview = pinkReview.split(",").join("|");
+            results.pinkCardResults = pinkReview;
 
             var greenReview = JSON.parse(localStorage.getItem("greenReview")) || [""];
-            var greenCardResults = greenReview.toString();
-            results.greenCardResults = greenCardResults;
+            greenReview = greenReview.toString();
+            greenReview = greenReview.split(",").join("|");
+            results.greenCardResults = greenReview;
 
             var responseGreenState1 = localStorage.getItem("responseGreenState1");
             results.responseGreenState1 = responseGreenState1;
