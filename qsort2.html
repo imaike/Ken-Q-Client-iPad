@@ -1811,6 +1811,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND 
                 console.log(JSON.stringify(positionCounts)); // this works but clear!
                 var results = _.pluck(result2, 'pos');
                 localStorage.setItem("theResults", JSON.stringify(results));
+                for (var ii=0,iiLen=results.length; ii<iiLen; ii++) {
+                    if (results[ii] > -1 ) {
+                        results[ii] = "+"+results[ii];
+                    }
+                }
                 var resultsAsString = results.toString();
                 console.log(JSON.stringify(resultsAsString));
                 localStorage.setItem("resultsAsString", resultsAsString);
